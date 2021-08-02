@@ -19,23 +19,40 @@
         <div id="h1Div">
             <h1 id="pageTitle">Komputer Store</h1>
         </div>
+        <div id="homePageImage">
+
+        </div>
     </header>
     <!-- <section id="test">
     </section> -->
     <section id="buyNow">  
+        <!-- <button>Buy now</button> -->
     </section>
-    <section id="theBank">
-        <!-- <div id="theBankDiv"> -->
-            <h2 id="theBankTitle">The bank</h2>
-            <p id="balance">
-                Balance: 200kr
-            </p>
-            <button id="getALoanBtn">Get a loan</button>
-        <!-- </div> -->
-    </section>
-    <section id="work">
-    </section>
-    <section id="laptops">
+    <section id="flexbox">
+        <section id="theBank">
+            <!-- <div id="theBankDiv"> -->
+                <h2 class="title">The bank</h2>
+                <p id="balance">
+                    Balance: 200kr
+                </p>
+                <button id="getALoanBtn" onclick="clickGetLoan()">Get a loan</button>
+            <!-- </div> -->
+        </section>
+        <section id="work">
+            <h2 class="title">Work</h2>
+            <p id="pay">Pay: 0kr</p>
+            <div id="buttonContainer">
+                <button class="workBtn" onclick="clickBank()">Bank</button>
+                <button class="workBtn" onclick="clickWork()">Work</button>
+            </div>
+        </section>
+        <section id="laptops">
+            <h2 class="title">Laptops</h2>
+            <select name:"laptops">
+                <option>hej</option>
+            </select>
+            <button onclick="getData()">fetch data</button>
+        </section>
     </section>
 </body>
 </html>
