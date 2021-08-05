@@ -6,22 +6,22 @@ let loanActive = false;
 let purchasedLaptop = false;
 let i = 0;
 
-// fetch API
+// fetch data from API
 fetch(url)
 .then(response => response.json())
 .then(data => laptops = data)
-.then(laptops => addLaptopsNew(laptops))
+.then(laptops => addLaptops(laptops))
 .catch(error => console.log(error))
 
 laptops.push(laptops)
 
-const addLaptopsNew = (laptops) => {
+const addLaptops = (laptops) => {
     laptops.map((laptop) => {
-        addLaptopSingleNew(laptop)
+        addLaptopSingle(laptop)
     });
 }
 
-const addLaptopSingleNew = (laptop) => {
+const addLaptopSingle = (laptop) => {
     const laptopElement = document.createElement("option");
     laptopElement.value = laptop.id;
     laptopElement.appendChild(document.createTextNode(laptop.title));
@@ -35,9 +35,8 @@ const increment = () => {
 }
 
 /**
- * This function updates the bank balance if loan is taken.
- * It also checks if the user is allowed to take a loan or not. 
- * If the loan is more than double the user's bank balance, the user is asked to try a smaller amount.
+ * This function updates the bank balance if loan is taken and also checks if the user is allowed to take a loan or not. 
+ * If the loan is more than double the user's bank balance, the user cannot take a loan and gets asked to try a smaller amount.
  */
 const clickGetLoan = () => {
     let balance = document.getElementById("balanceAmount").textContent;
@@ -66,7 +65,9 @@ const clickGetLoan = () => {
 }
 
 /**
- * This function checks if 
+ * This function is triggered when the user clicks on the Bank button.
+ * If the user has a loan and earns money, 10% goes directly into 
+ * the outstanding loan and the rest into the bank balance. Otherwise all money goes to the bank balance. 
  */
 const clickBank = () => {
     let fromWork = document.getElementById('pay').textContent;
@@ -94,6 +95,12 @@ const clickBank = () => {
     }
 }
 
+/**
+ * This function handles the repay of a loan. If the user has earned more money
+ * than the loan taken, the rest of the money goes into the bank balance.
+ * It also checks if the user doesn't have a loan and has purchased a laptop, if yes,
+ * the user is allowed to get a loan.  
+ */
 const clickRepay = () => {
     let fromWork = document.getElementById('pay').textContent;
     let loanBalance = document.getElementById('loanBalance').textContent;
@@ -121,6 +128,11 @@ const clickRepay = () => {
     } 
 }
 
+/**
+ * This function checks what laptop the user selected.
+ * Displays the selected laptop's features, title, price, description and image.
+ * Also handles the error with laptop with id 5's image.
+ */
 const selectedOption = () => {
     const laptopId = document.getElementById('selectLaptops').value;
     document.getElementById('imgContainer').style.display = 'block';
@@ -130,6 +142,8 @@ const selectedOption = () => {
 
     laptops.forEach((laptop) => {
         if (laptop.id === parseInt(laptopId) ){
+            document.getElementById('laptopTitle').innerHTML = laptop.title;
+            document.getElementById('laptopPrice').innerHTML = laptop.price;
             document.getElementById('laptopDescription').innerHTML = laptop.specs;
             
             let texts = document.getElementById('laptopDescription').textContent;
@@ -147,12 +161,13 @@ const selectedOption = () => {
                 let image = imageUrl.concat(specificImage);
                 document.getElementById('laptopImg').setAttribute('src', image);
             }
-            document.getElementById('laptopPrice').innerHTML = laptop.price;
-            document.getElementById('laptopTitle').innerHTML = laptop.title;
         }
     })
 }
 
+/**
+ * This function checks if the user can afford to buy the selected laptop or not.
+ */
 const buyNow = () => {
     let balance = document.getElementById("balanceAmount").textContent;
     const laptopId = document.getElementById('selectLaptops').value;
