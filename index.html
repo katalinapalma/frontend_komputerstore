@@ -11,48 +11,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
-    <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header id="header">
-        <div id="h1Div">
+        <div id="imageWrapper">
             <h1 id="pageTitle">Komputer Store</h1>
-        </div>
-        <div id="homePageImage">
-
+            <div id="overlay"></div>
+            <img src="blackCover.jpg" id="img">
         </div>
     </header>
-    <!-- <section id="test">
-    </section> -->
-    <section id="buyNow">  
-        <!-- <button>Buy now</button> -->
-    </section>
-    <section id="flexbox">
-        <section id="theBank">
-            <!-- <div id="theBankDiv"> -->
-                <h2 class="title">The bank</h2>
-                <p id="balance">
-                    Balance: 200kr
-                </p>
-                <button id="getALoanBtn" onclick="clickGetLoan()">Get a loan</button>
-            <!-- </div> -->
-        </section>
-        <section id="work">
-            <h2 class="title">Work</h2>
-            <p id="pay">Pay: 0kr</p>
-            <div id="buttonContainer">
-                <button class="workBtn" onclick="clickBank()">Bank</button>
-                <button class="workBtn" onclick="clickWork()">Work</button>
+
+    <section class="whiteBoxesContainer">
+        <div class="whiteBoxWrapper">
+            <div class="box" id="box1">
+                <div class="boxContent">
+                    <h2 class="bankTitle">Django Banker</h2>
+                    <p id="newBalance">
+                        Balance: <span id="balanceAmount">0</span>SEK
+                    </p>
+                    <p id="outstandingLoan">
+                        Outstanding loan: <span id="loanBalance">0</span>SEK
+                    </p>
+                    <p id="noLoan"></p>
+                    <button id="getALoanBtn" onclick="clickGetLoan()">Get a loan</button>
+                </div>
+               
             </div>
-        </section>
-        <section id="laptops">
-            <h2 class="title">Laptops</h2>
-            <select name:"laptops">
-                <option>hej</option>
-            </select>
-            <button onclick="getData()">fetch data</button>
-        </section>
+            <div class="box box2">
+                <div class="boxContent">
+                    <h2 id="workTitle">Work</h2>
+                    <p id="payTitle">Pay: <span id="pay">0</span>SEK</p>
+                    <div id="buttonContainer">
+                        <button class="workBtn" onclick="clickBank()">Bank</button>
+                        <button class="workBtn" id="increaseBtn" onclick="increment()">Work</button>
+                    </div>
+                    <div id="repayBtnContainer">
+                        <button id="repayBtn" onclick="clickRepay()">Repay loan</button>
+                    </div>
+                </div>
+            </div>
+            <div class="box box3">
+                <div class="boxContent">
+                    <h2 id="laptopsTitle">Laptops</h2>
+                    <select name="laptops" id="selectLaptops" class="select" onChange="selectedOption()">
+                        <option>Select a laptop</option>
+                    </select>
+                    <h3 id="featuresText">Features</h3>
+                    <div id="laptopDescription"></div>
+                </div>
+            </div>
+        </div>
     </section>
+ 
+    <section id="buyNow">  
+        <h2 id="buyNowTitle">Please, select a laptop!</h2>
+        <div id="imgContainer">
+            <img id="laptopImg" src="" />
+        </div>
+        <div id="descriptionContainer">
+            <div id="buyNowFlex">
+                <h2 id="laptopTitle"></h2>
+                <p id="description"></p>
+                <p id="priceTitle">Price: <span id="laptopPrice"></span>SEK</p>
+                <p id="buyNowMessage"></p>
+                <button class="buyNowBtn" onclick="buyNow()">Buy now</button>
+            </div>
+        </div>
+    </section>
+    <script src="index.js"></script>
 </body>
 </html>
