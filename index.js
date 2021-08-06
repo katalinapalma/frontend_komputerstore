@@ -22,10 +22,10 @@ const addLaptops = (laptops) => {
 }
 
 const addLaptopSingle = (laptop) => {
-    const laptopElement = document.createElement("option");
+    const laptopElement = document.createElement('option');
     laptopElement.value = laptop.id;
     laptopElement.appendChild(document.createTextNode(laptop.title));
-    const selectLaptops = document.getElementById("selectLaptops");
+    const selectLaptops = document.getElementById('selectLaptops');
     selectLaptops.appendChild(laptopElement);
 }
 
@@ -39,8 +39,8 @@ const increment = () => {
  * If the loan is more than double the user's bank balance, the user cannot take a loan and gets asked to try a smaller amount.
  */
 const clickGetLoan = () => {
-    let balance = document.getElementById("balanceAmount").textContent;
-    const loan = prompt("Please enter the amount you wish to loan");
+    let balance = document.getElementById('balanceAmount').textContent;
+    const loan = prompt('Please enter the amount you wish to loan');
     loanActive = true;
 
     if (loanActive === true) {
@@ -53,7 +53,7 @@ const clickGetLoan = () => {
         let doubleBalance = parseInt(balance) * 2 + 1;
         if(parseInt(loan) >= doubleBalance) {
             document.getElementById('repayBtn').style.display = 'none';
-            document.getElementById('noLoan').innerHTML = "You cannot get a loan, try a smaller amount";
+            document.getElementById('noLoan').innerHTML = 'You cannot get a loan, try a smaller amount';
         } else {
             document.getElementById('outstandingLoan').style.display = 'block';
             document.getElementById('getALoanBtn').style.display = 'none';
@@ -71,7 +71,7 @@ const clickGetLoan = () => {
  */
 const clickBank = () => {
     let fromWork = document.getElementById('pay').textContent;
-    let bankBalance = document.getElementById("balanceAmount").textContent;
+    let bankBalance = document.getElementById('balanceAmount').textContent;
 
     bankClicked = true;
     
@@ -88,9 +88,9 @@ const clickBank = () => {
         let updatedLoan = loan - moneyToOutstanding;
     
         document.getElementById('loanBalance').innerHTML = parseInt(updatedLoan);
-        document.getElementById("balanceAmount").innerHTML = parseInt(bankBalance) + parseInt(moneyToBalance);
+        document.getElementById('balanceAmount').innerHTML = parseInt(bankBalance) + parseInt(moneyToBalance);
     } else {
-        bankBalance = document.getElementById("balanceAmount").innerHTML = parseInt(bankBalance) + parseInt(fromWork);
+        bankBalance = document.getElementById('balanceAmount').innerHTML = parseInt(bankBalance) + parseInt(fromWork);
         document.getElementById('repayBtn').style.display = 'none';
     }
 }
@@ -104,7 +104,7 @@ const clickBank = () => {
 const clickRepay = () => {
     let fromWork = document.getElementById('pay').textContent;
     let loanBalance = document.getElementById('loanBalance').textContent;
-    let balance = document.getElementById("balanceAmount").textContent;
+    let balance = document.getElementById('balanceAmount').textContent;
     let totalLoan =  fromWork - loanBalance;
     let totalBalance = loanBalance - fromWork;
     i = 0;
@@ -147,7 +147,7 @@ const selectedOption = () => {
             document.getElementById('laptopDescription').innerHTML = laptop.specs;
             
             let texts = document.getElementById('laptopDescription').textContent;
-            let updatedText = texts.split(",").join("<br>")
+            let updatedText = texts.split('','').join('<br>');
             document.getElementById('laptopDescription').innerHTML = updatedText;
             document.getElementById('description').innerHTML = laptop.description;
 
@@ -169,15 +169,15 @@ const selectedOption = () => {
  * This function checks if the user can afford to buy the selected laptop or not.
  */
 const buyNow = () => {
-    let balance = document.getElementById("balanceAmount").textContent;
+    let balance = document.getElementById('balanceAmount').textContent;
     const laptopId = document.getElementById('selectLaptops').value;
 
     laptops.forEach((laptop) => {
         if (laptop.id === parseInt(laptopId)) {
             if(balance >= laptop.price) {
-                document.getElementById('buyNowMessage').innerHTML = "You purchased the laptop!";
+                document.getElementById('buyNowMessage').innerHTML = 'You purchased the laptop!';
                 setTimeout(function(){
-                    document.getElementById('buyNowMessage').innerHTML = "";
+                    document.getElementById('buyNowMessage').innerHTML = '';
                 }, 3000)
                 let newBalance = balance - laptop.price;
                 document.getElementById('balanceAmount').innerHTML = newBalance;
@@ -186,9 +186,9 @@ const buyNow = () => {
                     document.getElementById('getALoanBtn').style.display = 'block';
                 }
             } else {
-                document.getElementById('buyNowMessage').innerHTML = "You cannot afford the laptop!";
+                document.getElementById('buyNowMessage').innerHTML = 'You cannot afford the laptop!';
                 setTimeout(function() {
-                    document.getElementById('buyNowMessage').innerHTML = "";
+                    document.getElementById('buyNowMessage').innerHTML = '';
                 }, 3000)
             }
         }
