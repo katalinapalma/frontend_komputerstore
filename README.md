@@ -12,3 +12,6 @@ Here, the user is also able to transfer money to the bank balance, and/or to pay
 
 The laptop section shows a dropdown list with the available laptops. When the user selects a laptop, its features,
 title, description and price is shown.
+
+### Check out the webpage
+https://katalinapalma.github.io/frontend_komputerstore/
