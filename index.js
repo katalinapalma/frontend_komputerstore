@@ -154,7 +154,7 @@ const selectedOption = () => {
             let imageUrl = 'https://noroff-komputer-store-api.herokuapp.com/';
 
             if(laptop.id === 5) {
-                let uniqueImg = 'https://www.glarestomper.com/wp-content/uploads/2017/06/LTV-main.jpg';
+                let uniqueImg = 'https://noroff-komputer-store-api.herokuapp.com/assets/images/5.png';
                 document.getElementById('laptopImg').setAttribute('src', uniqueImg);
             } else {
                 let specificImage = laptop.image;
